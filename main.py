@@ -7,7 +7,7 @@ if __name__ == '__main__':
     times = ['Present simple', 'Past simple', 'Future simple']
     forms = ['Positive', 'Negative', 'Question']
 
-    matrix = []
+    questions = []
 
     for form in forms:
         if form == 'Positive':
@@ -17,20 +17,20 @@ if __name__ == '__main__':
                         for verb in verbs:
                             if pronounse == 'He' or pronounse == 'She':
                                 example = '{} {}s'.format(pronounse, verb)
-                                matrix.append(('Present + (' + pronounse + ' ' + verb + ')', example))
+                                questions.append(('Present + (' + pronounse + ' ' + verb + ')', example))
                             else:
                                 example = '{} {}'.format(pronounse, verb)
-                                matrix.append(('Present + (' + pronounse + ' ' + verb + ')', example))
+                                questions.append(('Present + (' + pronounse + ' ' + verb + ')', example))
                 elif time == 'Past simple':
                     for pronounse in pronounses:
                         for verb in verbs:
                             example = '{} {}d'.format(pronounse, verb)
-                            matrix.append(('Past + (' + pronounse + ' ' + verb + ')', example))
+                            questions.append(('Past + (' + pronounse + ' ' + verb + ')', example))
                 elif time == 'Future simple':
                     for pronounse in pronounses:
                         for verb in verbs:
                             example = '{} will {}'.format(pronounse, verb)
-                            matrix.append(('Future + (' + pronounse + ' ' + verb + ')', example))
+                            questions.append(('Future + (' + pronounse + ' ' + verb + ')', example))
                 else:
                     print('ERROR: time')
 
@@ -41,20 +41,20 @@ if __name__ == '__main__':
                         for verb in verbs:
                             if pronounse == 'He' or pronounse == 'She':
                                 example = '{} doesn`t {}'.format(pronounse, verb)
-                                matrix.append(('Present - (' + pronounse + ' ' + verb + ')', example))
+                                questions.append(('Present - (' + pronounse + ' ' + verb + ')', example))
                             else:
                                 example = '{} don`t {}'.format(pronounse, verb)
-                                matrix.append(('Present - (' + pronounse + ' ' + verb + ')', example))
+                                questions.append(('Present - (' + pronounse + ' ' + verb + ')', example))
                 elif time == 'Past simple':
                     for pronounse in pronounses:
                         for verb in verbs:
                             example = '{} didn`t {}'.format(pronounse, verb)
-                            matrix.append(('Past - (' + pronounse + ' ' + verb + ')', example))
+                            questions.append(('Past - (' + pronounse + ' ' + verb + ')', example))
                 elif time == 'Future simple':
                     for pronounse in pronounses:
                         for verb in verbs:
                             example = '{} will not {}'.format(pronounse, verb)
-                            matrix.append(('Future - (' + pronounse + ' ' + verb + ')', example))
+                            questions.append(('Future - (' + pronounse + ' ' + verb + ')', example))
                 else:
                     print('ERROR: time')
         elif form == 'Question':
@@ -64,20 +64,20 @@ if __name__ == '__main__':
                         for verb in verbs:
                             if pronounse == 'He' or pronounse == 'She':
                                 example = 'Does {} {}?'.format(pronounse, verb)
-                                matrix.append(('Present ? (' + pronounse + ' ' + verb + ')', example))
+                                questions.append(('Present ? (' + pronounse + ' ' + verb + ')', example))
                             else:
                                 example = 'Do {} {}?'.format(pronounse, verb)
-                                matrix.append(('Present ? (' + pronounse + ' ' + verb + ')', example))
+                                questions.append(('Present ? (' + pronounse + ' ' + verb + ')', example))
                 elif time == 'Past simple':
                     for pronounse in pronounses:
                         for verb in verbs:
                             example = 'Did {} {}?'.format(pronounse, verb)
-                            matrix.append(('Past ? (' + pronounse + ' ' + verb + ')', example))
+                            questions.append(('Past ? (' + pronounse + ' ' + verb + ')', example))
                 elif time == 'Future simple':
                     for pronounse in pronounses:
                         for verb in verbs:
                             example = 'Will {} {}?'.format(pronounse, verb)
-                            matrix.append(('Future ? (' + pronounse + ' ' + verb + ')', example))
+                            questions.append(('Future ? (' + pronounse + ' ' + verb + ')', example))
                 else:
                     print('ERROR: time')
         else:
@@ -86,26 +86,37 @@ if __name__ == '__main__':
 true_answer = 0
 false_answer = 0
 
-shuffle(matrix)
+shuffle(questions)
 
 # for ex in matrix:
 #     print(ex)
 
-for variant in matrix:
-    ask = input(variant[0] + ': ')
-    if ask.lower() == variant[1].lower():
+i = 0
+ml = len(questions)
+
+for question in questions:
+    answer = input(question[0] + ': ')
+    if answer.lower() == question[1].lower():
         true_answer += 1
-        print('Правильно! ', true_answer)
+        print('Правильно! ')
     else:
         false_answer += 1
-        print('Ошибка! ', false_answer)
-        print('Правильный ответ: ', variant[1])
+        print('Ошибка! ')
+        print('Правильный ответ: ', question[1])
+
+    i += 1
+    print('Прогресс: {}..{} True: {}  False: {}'.format(i, ml, true_answer, false_answer))
+
 
 print('true_answer ', true_answer)
 print('false_answer ', false_answer)
 
 # for ex in matrix.items():
 #     print(ex)
+
+# Прогресс: 54..54 True: 50  False: 4
+# true_answer  50
+# false_answer  4
 
 
 
