@@ -40,7 +40,7 @@ if __name__ == '__main__':
                     for pronounse in pronounses:
                         for verb in verbs:
                             if pronounse == 'He' or pronounse == 'She':
-                                example = '{} doesen`t {}'.format(pronounse, verb)
+                                example = '{} doesn`t {}'.format(pronounse, verb)
                                 matrix.append(('Present - (' + pronounse + ' ' + verb + ')', example))
                             else:
                                 example = '{} don`t {}'.format(pronounse, verb)
@@ -94,7 +94,7 @@ for i in range(1, 53):
         print('Правильно! ', true_answer)
     else:
         false_answer += 1
-        print('Ошибка! ', true_answer)
+        print('Ошибка! ', false_answer)
         print('Правильный ответ: ', variant[1])
 
 print('true_answer ', true_answer)
