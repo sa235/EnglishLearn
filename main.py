@@ -1,4 +1,4 @@
-from random import choice
+from random import shuffle
 
 if __name__ == '__main__':
     verbs = ['love']
@@ -63,10 +63,10 @@ if __name__ == '__main__':
                     for pronounse in pronounses:
                         for verb in verbs:
                             if pronounse == 'He' or pronounse == 'She':
-                                example = 'Does {} {}'.format(pronounse, verb)
+                                example = 'Does {} {}?'.format(pronounse, verb)
                                 matrix.append(('Present ? (' + pronounse + ' ' + verb + ')', example))
                             else:
-                                example = 'Do {} {}'.format(pronounse, verb)
+                                example = 'Do {} {}?'.format(pronounse, verb)
                                 matrix.append(('Present ? (' + pronounse + ' ' + verb + ')', example))
                 elif time == 'Past simple':
                     for pronounse in pronounses:
@@ -86,8 +86,12 @@ if __name__ == '__main__':
 true_answer = 0
 false_answer = 0
 
-for i in range(1, 53):
-    variant = choice(matrix)
+shuffle(matrix)
+
+# for ex in matrix:
+#     print(ex)
+
+for variant in matrix:
     ask = input(variant[0] + ': ')
     if ask.lower() == variant[1].lower():
         true_answer += 1
